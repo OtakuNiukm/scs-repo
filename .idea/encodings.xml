@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/cloud-iaas/auth-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-iaas/auth-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-iaas/gateway-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-iaas/gateway-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-iaas/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-iaas/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/cart-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/cart-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/manager-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/manager-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/member-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/member-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/order-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/order-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/product-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/product-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/search-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/search-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/store-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-business/store-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-common/common-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-common/common-base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-common/common-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-common/common-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/otaku-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
