@@ -97,7 +97,7 @@
             <!--第三方工具类库hu tool-->
             <dependency>
                 <groupId>cn.hutool</groupId>
-                <artifactId>hutools-all</artifactId>
+                <artifactId>hutool-all</artifactId>
                 <version>${hutool-all.version}</version>
             </dependency>
 
