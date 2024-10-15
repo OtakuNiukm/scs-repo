@@ -33,6 +33,7 @@
         <hutool-all.version>5.8.2</hutool-all.version>
         <springfox.version>3.0.0</springfox.version>
         <common-base.version>1.0-SNAPSHOT</common-base.version>
+        <fast-json.version>1.2.80</fast-json.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -91,7 +92,7 @@
             <!--mysql8驱动-->
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druit-spring-boot-starter</artifactId>
+                <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
 
@@ -114,6 +115,14 @@
                 <artifactId>common-base</artifactId>
                 <version>${common-base.version}</version>
             </dependency>
+
+            <!--fastjson依赖-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fast-json.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: auth-server # 微服务名称
+  cloud:
+    nacos:
+      server-addr: 182.92.206.132:8848
+      username: nacos
+      password: Niukm233
+      discovery: # 配置nacos注册中心
+        namespace: 8bc4290d-0dbd-4734-8a44-b58d6c3747f7
+        group: A_GROUP
+        service: ${spring.application.name}
+      config:
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        group: ${spring.cloud.nacos.discovery.group}
+        prefix: ${spring.application.name}
+        file-extension: yml
+        shared-configs: # 配置共享配置
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  profiles: # 多环境配置
+    active: dev
