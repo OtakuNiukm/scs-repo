@@ -62,22 +62,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--security依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
         <!--公共基础依赖-->
         <dependency>
             <groupId>com.otaku</groupId>
             <artifactId>common-base</artifactId>
-        </dependency>
-
-        <!--fastjson依赖-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
         </dependency>
 
     </dependencies>

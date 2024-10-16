@@ -89,7 +89,7 @@
                 <version>${mysql.version}</version>
             </dependency>
 
-            <!--mysql8驱动-->
+            <!--数据池驱动-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>

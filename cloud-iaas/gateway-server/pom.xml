@@ -53,10 +53,13 @@
         <dependency>
             <groupId>com.otaku</groupId>
             <artifactId>common-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.otaku</groupId>
-            <artifactId>common-base</artifactId>
+            <!--排除掉spring-boot-starter-security-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-security</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
