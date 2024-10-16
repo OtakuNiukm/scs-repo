@@ -33,6 +33,7 @@
         <hutool-all.version>5.8.2</hutool-all.version>
         <springfox.version>3.0.0</springfox.version>
         <common-base.version>1.0-SNAPSHOT</common-base.version>
+        <common-core.version>1.0-SNAPSHOT</common-core.version>
         <fast-json.version>1.2.80</fast-json.version>
     </properties>
 
@@ -115,7 +116,12 @@
                 <artifactId>common-base</artifactId>
                 <version>${common-base.version}</version>
             </dependency>
-
+            <!--公共核心模块依赖-->
+            <dependency>
+                <groupId>com.otaku</groupId>
+                <artifactId>common-core</artifactId>
+                <version>${common-core.version}</version>
+            </dependency>
             <!--fastjson依赖-->
             <dependency>
                 <groupId>com.alibaba</groupId>
