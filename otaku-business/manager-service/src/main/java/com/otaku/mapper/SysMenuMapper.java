@@ -3,6 +3,8 @@ package com.otaku.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.otaku.domain.SysMenu;
 
+import java.util.Set;
+
 /**
  *  @Author: wz296
  *  @Description: 
@@ -11,4 +13,11 @@ import com.otaku.domain.SysMenu;
  *  @Version: 1.0
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
+
+    /**
+     * 根据用户id查询菜单列表
+     * @param loginUserId
+     * @return
+     */
+    Set<SysMenu> selectUserMenuListByUserId(Long loginUserId);
 }

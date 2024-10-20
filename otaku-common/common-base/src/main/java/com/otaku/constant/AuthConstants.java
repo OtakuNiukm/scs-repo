@@ -13,7 +13,7 @@ public interface AuthConstants {
     /**
      * Token值的前缀
      */
-    String BEARER = "Bearer";
+    String BEARER = "bearer ";
 
     /**
      * Token值存放在redis中的前缀

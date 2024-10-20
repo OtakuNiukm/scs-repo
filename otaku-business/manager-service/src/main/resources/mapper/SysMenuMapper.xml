@@ -17,4 +17,16 @@
     <!--@mbg.generated-->
     menu_id, parent_id, `name`, url, perms, `type`, icon, order_num
   </sql>
+
+  <select id="selectUserMenuListByUserId" resultMap="BaseResultMap">
+    SELECT
+      t1.*
+    FROM
+      sys_menu t1
+       JOIN sys_role_menu t2 ON t1.menu_id = t2.menu_id
+       JOIN sys_user_role t3 ON t2.role_id = t3.role_id
+    WHERE
+      t3.user_id = #{loginUserId}
+      AND (t1.type = 0 OR t1.type = 1);
+  </select>
 </mapper>
