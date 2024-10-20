@@ -1,5 +1,7 @@
 package com.otaku.service.impl;
 
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,12 +22,14 @@ import com.otaku.service.SysMenuService;
  *  @Version: 1.0
  */
 @Service
+@CacheConfig(cacheNames = "com.otaku.service.impl.SysMenuServiceImpl")
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService{
 
     @Autowired
     private SysMenuMapper sysMenuMapper;
 
     @Override
+    @Cacheable(key = "#loginUserId")
     public Set<SysMenu> queryUserMenuListByUserId(Long loginUserId) {
         // 查询用户的菜单权限
         Set<SysMenu> sysMenus = sysMenuMapper.selectUserMenuListByUserId(loginUserId);
