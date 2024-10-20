@@ -8,20 +8,22 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 
 import java.time.Duration;
 
-
+/**
+ * redis缓存配置类
+ */
 @Configuration
 public class RedisCacheConfig {
 
     @Bean
-    public RedisCacheConfiguration redisCacheConfig(){
-        // 创建Redis缓存配置类
+    public RedisCacheConfiguration redisCacheConfiguration() {
+        // 创建redis缓存配置类
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
-        // 设置Redis
+        // 进行redis配置
         redisCacheConfiguration.serializeValuesWith(
                 RedisSerializationContext.SerializationPair.fromSerializer(RedisSerializer.json())
-                ) // 设置序列化器
-                .entryTtl(Duration.ofDays(7))   // 设置缓存有效期7天
-                .disableCachingNullValues();   // redis 不缓存空值
+                ) // 设置redis值的序列化方式为json格式
+                .entryTtl(Duration.ofDays(7))   // 统一设置redis中值的默认过期时间（7天）
+                .disableCachingNullValues();    // redis的value值禁止使用空值
 
         return redisCacheConfiguration;
     }
