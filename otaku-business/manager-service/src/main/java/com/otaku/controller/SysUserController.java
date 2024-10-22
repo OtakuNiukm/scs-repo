@@ -1,5 +1,7 @@
 package com.otaku.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.otaku.domain.SysUser;
 import com.otaku.model.Result;
 import com.otaku.service.SysUserService;
@@ -7,8 +9,11 @@ import com.otaku.util.AuthUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -34,5 +39,21 @@ public class SysUserController {
        // 根据用户标识查询登录用户信息
        SysUser sysUser = sysUserService.getById(loginUserId);
        return Result.success(sysUser);
+   }
+
+   @ApiOperation("多条件分页查询系统管理员")
+   @GetMapping("page")
+   @PreAuthorize("hasAnyAuthority('sys:user:page')")
+   public Result<Page<SysUser>> loadSysUserPage(@RequestParam Long current,
+                                                @RequestParam Long size,
+                                                @RequestParam(required = false) String username) {
+       // 创建MyBatis分页对象
+       Page<SysUser> page = new Page<>(current, size);
+       //多条件分页查询
+       page = sysUserService.page(page, new LambdaQueryWrapper<SysUser>()
+               .like(StringUtils.hasText(username), SysUser::getUsername, username)
+               .orderByDesc(SysUser::getCreateTime)
+       );
+       return Result.success(page);
    }
 }
