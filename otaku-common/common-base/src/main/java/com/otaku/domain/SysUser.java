@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -82,6 +84,11 @@ public class SysUser implements Serializable {
     @TableField(value = "shop_id")
     @ApiModelProperty(value="用户所在的商城Id")
     private Long shopId;
+
+    //////////////新增管理员/////////////////////
+    @TableField(exist = false)
+    @ApiModelProperty("角色id集合")
+    private List<Long> roleIdList;
 
     private static final long serialVersionUID = 1L;
 }

@@ -2,7 +2,10 @@ package com.otaku.service;
 
 import com.otaku.domain.SysRole;
 import com.baomidou.mybatisplus.extension.service.IService;
-    /**
+
+import java.util.List;
+
+/**
  *  @Author: wz296
  *  @Description: 
  *  @Date: Created in 2024/10/20 下午12:48 
@@ -12,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface SysRoleService extends IService<SysRole>{
 
 
-}
+        List<SysRole> querySysRoleList();
+    }

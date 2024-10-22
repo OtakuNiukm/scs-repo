@@ -11,10 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: wz296
@@ -55,5 +52,13 @@ public class SysUserController {
                .orderByDesc(SysUser::getCreateTime)
        );
        return Result.success(page);
+   }
+
+   @ApiOperation("新增管理员")
+   @PostMapping()
+   @PreAuthorize("hasAnyAuthority('sys:user:save')")
+   public Result<String> saveSysUser(@RequestBody SysUser sysUser) {
+        Integer count = sysUserService.saveSysUser(sysUser);
+        return Result.handle(count > 0);
    }
 }
