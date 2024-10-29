@@ -7,7 +7,7 @@ package com.otaku.ex.handler;
  * @FileName: BusinessException
  * @Version: 1.0
  */
-public class BusinessException extends RuntimeException{
+public class BusinessException extends RuntimeException {
 
     public BusinessException(String message) {
         super(message);

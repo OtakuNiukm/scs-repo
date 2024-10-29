@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    
+
     @Autowired
     private LoginStrategyFactory loginStrategyFactory;
 

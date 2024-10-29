@@ -20,7 +20,7 @@ public class RedisCacheConfig {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
         // 进行redis配置
         redisCacheConfiguration.serializeValuesWith(
-                RedisSerializationContext.SerializationPair.fromSerializer(RedisSerializer.json())
+                        RedisSerializationContext.SerializationPair.fromSerializer(RedisSerializer.json())
                 ) // 设置redis值的序列化方式为json格式
                 .entryTtl(Duration.ofDays(7))   // 统一设置redis中值的默认过期时间（7天）
                 .disableCachingNullValues();    // redis的value值禁止使用空值

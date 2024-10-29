@@ -53,5 +53,5 @@ public interface AuthConstants {
     /**
      * Token过期阈值(单位秒，1小时)
      */
-    Long TOKEN_EXPIRE_THRESHOLD_TIME = 60*60L;
+    Long TOKEN_EXPIRE_THRESHOLD_TIME = 60 * 60L;
 }

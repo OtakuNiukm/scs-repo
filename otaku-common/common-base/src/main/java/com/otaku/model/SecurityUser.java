@@ -64,7 +64,7 @@ public class SecurityUser implements UserDetails {
         return this.status == 1;
     }
 
-    public Set<String> getPerms(){
+    public Set<String> getPerms() {
         HashSet<String> finalPermsSet = new HashSet<>();
         // 循环遍历用户权限集合
         perms.forEach(perm -> {

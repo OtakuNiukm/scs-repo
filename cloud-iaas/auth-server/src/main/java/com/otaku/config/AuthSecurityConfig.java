@@ -44,6 +44,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 设置Security安全框架走自己的认证流程
+     *
      * @param auth
      * @throws Exception
      */
@@ -76,6 +77,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 登录成功处理器
+     *
      * @return
      */
     @Bean
@@ -111,6 +113,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 登录失败处理器
+     *
      * @return
      */
     @Bean
@@ -150,6 +153,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 登出成功处理器
+     *
      * @return
      */
     @Bean
@@ -158,7 +162,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
             // 设置响应头信息
             response.setContentType(HttpConstants.APPLICATION_JSON);
             response.setCharacterEncoding(HttpConstants.CHARSET_UTF8);
-            
+
             // 从请求头获取TOKEN
             String authorization = request.getHeader(AuthConstants.AUTHORIZATION);
             String token = authorization.replaceFirst(AuthConstants.BEARER, "");
@@ -181,6 +185,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 密码加密器
+     *
      * @return
      */
     @Bean

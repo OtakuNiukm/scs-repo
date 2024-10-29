@@ -17,6 +17,7 @@ public class AuthUtils {
 
     /**
      * 获取容器中用户对象
+     *
      * @return
      */
     public static SecurityUser getLoginUser() {
@@ -26,6 +27,7 @@ public class AuthUtils {
 
     /**
      * 获取当前登录用户ID
+     *
      * @return
      */
     public static Long getUserId() {
@@ -34,6 +36,7 @@ public class AuthUtils {
 
     /**
      * 获取当前登录用户权限
+     *
      * @return
      */
     public static Set<String> getLoginUserPermissions() {

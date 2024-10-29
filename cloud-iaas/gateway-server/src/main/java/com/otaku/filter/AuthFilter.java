@@ -57,7 +57,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
         String path = request.getPath().toString();
         // 判断是否需要放行，即是否存在于白名单中
         if (whiteUrlsConfig.getAllowUrls().contains(path)) {
-        // 放行
+            // 放行
             return chain.filter(exchange);
         }
         // 不包含在白名单中，对其进行身份认证

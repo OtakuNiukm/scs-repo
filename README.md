@@ -1,7 +1,7 @@
 # Spring Cloud Study
 
 ## Git 以及 IntelliJ IDEA 中 Git 和 GitHub 操作指南
-  
+
 ### 目录
 
 1. [Git 基本操作](#git-基本操作)
@@ -37,7 +37,6 @@
 ```bash
 git init
 ```
-
 
 ### 2. 添加文件到暂存区
 

@@ -22,8 +22,10 @@ public class SysUserLoginStrategy implements LoginStrategy {
 
     @Autowired
     private LoginSysUserMapper loginSysUserMapper;
+
     /**
      * 根据用户登录类型获取具体登录策略
+     *
      * @param username
      * @return
      */

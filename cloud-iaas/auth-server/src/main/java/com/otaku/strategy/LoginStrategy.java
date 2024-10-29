@@ -9,6 +9,7 @@ public interface LoginStrategy {
 
     /**
      * 登录方法
+     *
      * @param username
      * @return
      */

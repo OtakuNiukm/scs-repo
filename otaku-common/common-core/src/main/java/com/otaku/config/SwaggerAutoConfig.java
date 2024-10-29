@@ -31,7 +31,7 @@ public class SwaggerAutoConfig {
     private SwaggerProperties swaggerProperties;
 
     @Bean
-    public Docket docket(){
+    public Docket docket() {
         Boolean flag = true;
         String[] activeProfiles = environment.getActiveProfiles();
         for (String activeProfile : activeProfiles) {

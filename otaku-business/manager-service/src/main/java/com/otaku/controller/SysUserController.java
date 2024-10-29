@@ -28,37 +28,37 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
-   @ApiOperation("查询登录用户信息")
-   @GetMapping("info")
-   public Result<SysUser> loadSysUserInfo() {
-       // 获取登录用户标识
-       Long loginUserId = AuthUtils.getUserId();
-       // 根据用户标识查询登录用户信息
-       SysUser sysUser = sysUserService.getById(loginUserId);
-       return Result.success(sysUser);
-   }
+    @ApiOperation("查询登录用户信息")
+    @GetMapping("info")
+    public Result<SysUser> loadSysUserInfo() {
+        // 获取登录用户标识
+        Long loginUserId = AuthUtils.getUserId();
+        // 根据用户标识查询登录用户信息
+        SysUser sysUser = sysUserService.getById(loginUserId);
+        return Result.success(sysUser);
+    }
 
-   @ApiOperation("多条件分页查询系统管理员")
-   @GetMapping("page")
-   @PreAuthorize("hasAnyAuthority('sys:user:page')")
-   public Result<Page<SysUser>> loadSysUserPage(@RequestParam Long current,
-                                                @RequestParam Long size,
-                                                @RequestParam(required = false) String username) {
-       // 创建MyBatis分页对象
-       Page<SysUser> page = new Page<>(current, size);
-       //多条件分页查询
-       page = sysUserService.page(page, new LambdaQueryWrapper<SysUser>()
-               .like(StringUtils.hasText(username), SysUser::getUsername, username)
-               .orderByDesc(SysUser::getCreateTime)
-       );
-       return Result.success(page);
-   }
+    @ApiOperation("多条件分页查询系统管理员")
+    @GetMapping("page")
+    @PreAuthorize("hasAuthority('sys:user:page')")
+    public Result<Page<SysUser>> loadSysUserPage(@RequestParam Long current,
+                                                 @RequestParam Long size,
+                                                 @RequestParam(required = false) String username) {
+        // 创建MyBatis分页对象
+        Page<SysUser> page = new Page<>(current, size);
+        //多条件分页查询
+        page = sysUserService.page(page, new LambdaQueryWrapper<SysUser>()
+                .like(StringUtils.hasText(username), SysUser::getUsername, username)
+                .orderByDesc(SysUser::getCreateTime)
+        );
+        return Result.success(page);
+    }
 
-   @ApiOperation("新增管理员")
-   @PostMapping()
-   @PreAuthorize("hasAnyAuthority('sys:user:save')")
-   public Result<String> saveSysUser(@RequestBody SysUser sysUser) {
+    @ApiOperation("新增管理员")
+    @PostMapping()
+    @PreAuthorize("hasAuthority('sys:user:save')")
+    public Result<String> saveSysUser(@RequestBody SysUser sysUser) {
         Integer count = sysUserService.saveSysUser(sysUser);
         return Result.handle(count > 0);
-   }
+    }
 }

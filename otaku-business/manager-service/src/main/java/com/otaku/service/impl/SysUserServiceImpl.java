@@ -1,30 +1,30 @@
 package com.otaku.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.otaku.domain.SysUser;
 import com.otaku.domain.SysUserRole;
+import com.otaku.mapper.SysUserMapper;
 import com.otaku.mapper.SysUserRoleMapper;
 import com.otaku.service.SysUserRoleService;
+import com.otaku.service.SysUserService;
 import com.otaku.util.AuthUtils;
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.otaku.mapper.SysUserMapper;
-import com.otaku.domain.SysUser;
-import com.otaku.service.SysUserService;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
- *  @Author: wz296
- *  @Description: 
- *  @Date: Created in 2024/10/20 下午12:48 
- *  @FileName: SysUserServiceImpl
- *  @Version: 1.0
+ * @Author: wz296
+ * @Description:
+ * @Date: Created in 2024/10/20 下午12:48
+ * @FileName: SysUserServiceImpl
+ * @Version: 1.0
  */
 @Service
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService{
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
     @Autowired
     private SysUserMapper sysUserMapper;
@@ -37,8 +37,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     /**
      * 新增管理员
-     *  1.新增管理员
-     *  2.新增管理员与角色关系
+     * 1.新增管理员
+     * 2.新增管理员与角色关系
+     *
      * @param sysUser
      * @return
      */
@@ -50,7 +51,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         sysUser.setCreateTime(new Date());
         sysUser.setShopId(1L);
         int i = sysUserMapper.insert(sysUser);
-        if ( i > 0 ) {
+        if (i > 0) {
             // 获取管理员标识
             Long userId = sysUser.getUserId();
             // 获取管理员与角色的关系

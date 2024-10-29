@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @Author: wz296
  * @Description: Fegin拦截器
- *                  作用：解决服务之间调用无Token情况
- *                  浏览器 -> A服务 -> B服务
- *                  定时器 -> A服务
+ * 作用：解决服务之间调用无Token情况
+ * 浏览器 -> A服务 -> B服务
+ * 定时器 -> A服务
  * @Date: Created in 2024/10/16 下午2:41
  * @FileName: FeignInterceptor
  * @Version: 1.0
@@ -36,6 +36,6 @@ public class FeignInterceptor implements RequestInterceptor {
                 return;
             }
         }
-        requestTemplate.header(AuthConstants.AUTHORIZATION, AuthConstants.BEARER+"17ed7f2b-610b-4c88-953c-700a0e1d1050");
+        requestTemplate.header(AuthConstants.AUTHORIZATION, AuthConstants.BEARER + "17ed7f2b-610b-4c88-953c-700a0e1d1050");
     }
 }

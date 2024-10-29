@@ -38,13 +38,13 @@ public class TokenTranslationFilter extends OncePerRequestFilter {
      * Token转换过滤器
      * 前提：只负责处理携带Token的请求，然后将认证的用户信息转换出来
      * 没有携带Token的请求，交给security资源配置类中的处理器进行处理
-     *
+     * <p>
      * 1. 获取Token
      * 2. 判断是否有值
-     *      有：
-     *          Token转换为用户信息，
-     *          并将用户信息转换为Security框架认识的用户信息对象，
-     *          再将认识的用户信息对象存放在当前资源服务的窗口中
+     * 有：
+     * Token转换为用户信息，
+     * 并将用户信息转换为Security框架认识的用户信息对象，
+     * 再将认识的用户信息对象存放在当前资源服务的窗口中
      *
      * @param request
      * @param response
@@ -59,7 +59,7 @@ public class TokenTranslationFilter extends OncePerRequestFilter {
         // 判断是否为空
         if (authorizationValue != null && !authorizationValue.isEmpty()) {
             // 截取token，得到真正的token
-            String token = authorizationValue.replaceFirst(AuthConstants.BEARER,  "");
+            String token = authorizationValue.replaceFirst(AuthConstants.BEARER, "");
             // 判断Token值是否为空
             if (StringUtils.hasText(token)) {
                 // 解决Token续签

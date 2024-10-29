@@ -54,6 +54,4 @@ public class SwaggerProperties {
     private String version;
 
 
-
-
 }
