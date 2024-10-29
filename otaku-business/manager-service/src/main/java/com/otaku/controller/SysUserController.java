@@ -61,4 +61,20 @@ public class SysUserController {
         Integer count = sysUserService.saveSysUser(sysUser);
         return Result.handle(count > 0);
     }
+
+    @ApiOperation("根据标识查询系统管理员信息")
+    @GetMapping("info/{id}")
+    @PreAuthorize("hasAuthority('sys:user:info')")
+    public Result<SysUser> loadSysUserInfo(@PathVariable Long id) {
+        SysUser sysUser = sysUserService.querySysUserInfoByUserId(id);
+       return Result.success(sysUser);
+    }
+
+    @ApiOperation("修改管理员信息")
+    @PutMapping
+    @PreAuthorize("hasAuthority('sys:user:update')")
+    public Result<String> modifySysUserInfo(@RequestBody SysUser sysUser) {
+        Integer count = sysUserService.modifySysUserInfo(sysUser);
+        return Result.handle(count > 0);
+    }
 }

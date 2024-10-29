@@ -12,6 +12,24 @@ import com.otaku.domain.SysUser;
  */
 public interface SysUserService extends IService<SysUser> {
 
-
+    /**
+     * 新增管理员
+     * @param sysUser
+     * @return
+     */
     Integer saveSysUser(SysUser sysUser);
+
+    /**
+     * 根据用户id查询用户信息
+     * @param id
+     * @return
+     */
+    SysUser querySysUserInfoByUserId(Long id);
+
+    /**
+     * 修改管理员信息
+     * @param sysUser
+     * @return
+     */
+    Integer modifySysUserInfo(SysUser sysUser);
 }
