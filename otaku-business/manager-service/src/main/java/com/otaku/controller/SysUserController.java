@@ -30,6 +30,10 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
+    /**
+     * 查询登录
+     * @return 结果
+     */
     @ApiOperation("查询登录用户信息")
     @GetMapping("info")
     public Result<SysUser> loadSysUserInfo() {
@@ -40,6 +44,13 @@ public class SysUserController {
         return Result.success(sysUser);
     }
 
+    /**
+     * 多条件分页查询系统管理员
+     * @param current 当前页
+     * @param size 每页显示条目
+     * @param username 用户名
+     * @return 分页对象
+     */
     @ApiOperation("多条件分页查询系统管理员")
     @GetMapping("page")
     @PreAuthorize("hasAuthority('sys:user:page')")
@@ -56,6 +67,11 @@ public class SysUserController {
         return Result.success(page);
     }
 
+    /**
+     * 新增管理员
+     * @param sysUser 管理员实体
+     * @return 结果
+     */
     @ApiOperation("新增管理员")
     @PostMapping()
     @PreAuthorize("hasAuthority('sys:user:save')")
@@ -64,6 +80,11 @@ public class SysUserController {
         return Result.handle(count > 0);
     }
 
+    /**
+     * 根据标识查询系统管理员信息
+     * @param id 标识
+     * @return 结果
+     */
     @ApiOperation("根据标识查询系统管理员信息")
     @GetMapping("info/{id}")
     @PreAuthorize("hasAuthority('sys:user:info')")
@@ -72,6 +93,11 @@ public class SysUserController {
        return Result.success(sysUser);
     }
 
+    /**
+     * 修改管理员信息
+     * @param sysUser 管理员实体
+     * @return 结果
+     */
     @ApiOperation("修改管理员信息")
     @PutMapping
     @PreAuthorize("hasAuthority('sys:user:update')")
@@ -80,6 +106,11 @@ public class SysUserController {
         return Result.handle(count > 0);
     }
 
+    /**
+     * 批量/单个删除管理员
+     * @param userIds 管理员标识集合
+     * @return 结果
+     */
     @ApiOperation("批量/单个删除管理员")
     @DeleteMapping("{userIds}")
     @PreAuthorize("hasAuthority('sys:user:delete')")

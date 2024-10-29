@@ -1,14 +1,18 @@
 package com.otaku.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.otaku.constant.ManagerConstants;
 import com.otaku.domain.SysMenu;
 import com.otaku.mapper.SysMenuMapper;
 import com.otaku.service.SysMenuService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -70,5 +74,15 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             rootMenu.setList(transformTree(sysMenus, rootMenu.getMenuId()));
         });
         return rootMenus;
+    }
+
+    /**
+     * 查询所有菜单权限集合
+     * @return List<SysMenu> 所有权限集合
+     */
+    @Override
+    @Cacheable(key = ManagerConstants.SYS_ALL_MENU_KEY)
+    public List<SysMenu> queryAllSysMenuList() {
+        return sysMenuMapper.selectList(null);
     }
 }

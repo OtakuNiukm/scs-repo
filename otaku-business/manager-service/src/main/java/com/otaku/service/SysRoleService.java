@@ -15,5 +15,23 @@ import java.util.List;
 public interface SysRoleService extends IService<SysRole> {
 
 
+    /**
+     * 查询所有角色
+     * @return List<SysRole>
+     */
     List<SysRole> querySysRoleList();
+
+    /**
+     * 新增角色
+     * @param sysRole 新增角色对象
+     * @return Boolean
+     */
+    Boolean saveSysRole(SysRole sysRole);
+
+    /**
+     * 根据角色ID查询角色信息
+     * @param roleId 角色ID
+     * @return SysRole
+     */
+    SysRole querySysRoleInfoById(Long roleId);
 }

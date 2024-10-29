@@ -3,6 +3,7 @@ package com.otaku.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.otaku.domain.SysMenu;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,7 +19,13 @@ public interface SysMenuService extends IService<SysMenu> {
      * 根据用户id查询菜单列表
      *
      * @param loginUserId
-     * @return
+     * @return Set
      */
     Set<SysMenu> queryUserMenuListByUserId(Long loginUserId);
+
+    /**
+     * 查询所有菜单列表
+     * @return List
+     */
+    List<SysMenu> queryAllSysMenuList();
 }

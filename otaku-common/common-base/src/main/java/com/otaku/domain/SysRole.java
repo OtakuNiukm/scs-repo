@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 角色
@@ -52,4 +53,10 @@ public class SysRole implements Serializable {
     @TableField(value = "create_time")
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
+
+    //////////// 新增角色 ////////////
+    @TableField(exist = false)
+    @ApiModelProperty("权限Id集合")
+    private List<Long> menuIdList;
+
 }
