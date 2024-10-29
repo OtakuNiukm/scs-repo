@@ -3,6 +3,8 @@ package com.otaku.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.otaku.domain.SysUser;
 
+import java.util.List;
+
 /**
  * @Author: wz296
  * @Description:
@@ -32,4 +34,11 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      */
     Integer modifySysUserInfo(SysUser sysUser);
+
+    /**
+     * 批量/单个删除管理员
+     * @param userIds
+     * @return
+     */
+    Boolean removeSysUserListByUserIds(List<Long> userIds);
 }

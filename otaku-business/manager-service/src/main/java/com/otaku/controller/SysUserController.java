@@ -13,6 +13,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: wz296
  * @Description: 系统管理员控制层
@@ -76,5 +78,13 @@ public class SysUserController {
     public Result<String> modifySysUserInfo(@RequestBody SysUser sysUser) {
         Integer count = sysUserService.modifySysUserInfo(sysUser);
         return Result.handle(count > 0);
+    }
+
+    @ApiOperation("批量/单个删除管理员")
+    @DeleteMapping("{userIds}")
+    @PreAuthorize("hasAuthority('sys:user:delete')")
+    public Result<String> removeSysUsers(@PathVariable List<Long> userIds) {
+        Boolean removed = sysUserService.removeSysUserListByUserIds(userIds);
+       return Result.handle(removed);
     }
 }

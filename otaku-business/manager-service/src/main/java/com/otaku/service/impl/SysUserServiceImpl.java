@@ -58,6 +58,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         sysUser.setCreateUserId(AuthUtils.getLoginUser().getUserId());
         sysUser.setCreateTime(new Date());
         sysUser.setShopId(1L);
+        sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
         int i = sysUserMapper.insert(sysUser);
         if (i > 0) {
             // 获取管理员标识
@@ -145,5 +146,22 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             sysUser.setPassword(passwordEncoder.encode(newPassword));
         }
         return sysUserMapper.updateById(sysUser);
+    }
+
+    /**
+     * 批量/单个删除管理员
+     *   1. 删除管理员与角色关系记录
+     *   2. 删除管理员信息
+     * @param userIds
+     * @return
+     */
+    @Override
+    public Boolean removeSysUserListByUserIds(List<Long> userIds) {
+        // 批量/单个删除管理员与角色关系的记录
+        sysUserRoleMapper.delete(new LambdaQueryWrapper<SysUserRole>()
+                .in(SysUserRole::getUserId, userIds)
+        );
+        // 批量/单个删除管理员信息
+        return sysUserMapper.deleteBatchIds(userIds) == userIds.size();
     }
 }
