@@ -1,7 +1,10 @@
 package com.otaku.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.otaku.constant.ManagerConstants;
 import com.otaku.domain.SysRole;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,4 +37,18 @@ public interface SysRoleService extends IService<SysRole> {
      * @return SysRole
      */
     SysRole querySysRoleInfoById(Long roleId);
+
+    /**
+     * 修改角色
+     * @param sysRole 修改角色对象
+     * @return Boolean
+     */
+    Boolean modifySysRole(SysRole sysRole);
+
+    /**
+     * 删除角色
+     * @param roleIdList 角色ID集合
+     * @return Boolean
+     */
+    Boolean removeSysRoleListByIds(List<Long> roleIdList);
 }

@@ -8,6 +8,7 @@ import com.otaku.service.SysMenuService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -84,5 +85,16 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     @Cacheable(key = ManagerConstants.SYS_ALL_MENU_KEY)
     public List<SysMenu> queryAllSysMenuList() {
         return sysMenuMapper.selectList(null);
+    }
+
+    /**
+     * 新增权限
+     * @param sysMenu 权限实体
+     * @return Boolean
+     */
+    @Override
+    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
+    public Boolean saveSysMenu(SysMenu sysMenu) {
+        return sysMenuMapper.insert(sysMenu) > 0;
     }
 }

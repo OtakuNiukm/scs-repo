@@ -28,4 +28,11 @@ public interface SysMenuService extends IService<SysMenu> {
      * @return List
      */
     List<SysMenu> queryAllSysMenuList();
+
+    /**
+     * 新增菜单
+     * @param sysMenu 权限实体
+     * @return Boolean
+     */
+    Boolean saveSysMenu(SysMenu sysMenu);
 }

@@ -117,4 +117,60 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
         }
         return sysRole;
     }
+
+    /**
+     * 修改角色信息
+     * 1. 修改角色信息
+     * 2. 修改角色与权限关系集合
+     * @param sysRole 修改角色对象
+     * @return Boolean
+     */
+    @Override
+    @CacheEvict(key = ManagerConstants.SYS_ALL_ROLE_KEY)
+    @Transactional(rollbackFor = Exception.class)
+    public Boolean modifySysRole(SysRole sysRole) {
+        // 获取角色ID
+        Long roleId = sysRole.getRoleId();
+        // 删除角色原有的权限集合
+        sysRoleMenuMapper.delete(new LambdaQueryWrapper<SysRoleMenu>()
+                .eq(SysRoleMenu::getRoleId, roleId)
+        );
+        // 获取角色对应的权限集合
+        List<Long> menuIdList = sysRole.getMenuIdList();
+        // 创建角色与权限集合
+        List<SysRoleMenu> sysRoleMenuList = new ArrayList<>();
+        // 判断是否有值
+        if (CollectionUtil.isNotEmpty(menuIdList) && !menuIdList.isEmpty()) {
+            // 循环添加角色与权限的关系
+            menuIdList.forEach(menuId -> {
+                // 创建角色与权限关系记录
+                SysRoleMenu sysRoleMenu = new SysRoleMenu();
+                sysRoleMenu.setRoleId(roleId);
+                sysRoleMenu.setMenuId(menuId);
+                // 收集角色与权限关系记录
+                sysRoleMenuList.add(sysRoleMenu);
+            });
+            // 批量添加角色与权限关系集合
+            sysRoleMenuService.saveBatch(sysRoleMenuList);
+        }
+        // 修改角色信息
+        return sysRoleMapper.updateById(sysRole) > 0;
+    }
+
+    /**
+     * 批量或单个删除角色信息
+     * @param roleIdList 角色ID集合
+     * @return Boolean
+     */
+    @Override
+    @CacheEvict(key = ManagerConstants.SYS_ALL_ROLE_KEY)
+    @Transactional(rollbackFor = Exception.class)
+    public Boolean removeSysRoleListByIds(List<Long> roleIdList) {
+        // 批量或单个删除角色与权限关系集合
+        sysRoleMenuMapper.delete(new LambdaQueryWrapper<SysRoleMenu>()
+                .in(SysRoleMenu::getRoleId, roleIdList)
+        );
+        // 批量或单个删除角色信息
+        return sysRoleMapper.deleteBatchIds(roleIdList) == roleIdList.size();
+    }
 }
