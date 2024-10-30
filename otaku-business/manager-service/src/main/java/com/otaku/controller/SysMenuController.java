@@ -78,7 +78,7 @@ public class SysMenuController {
      * @param menuId 标识
      * @return Result
      */
-    @ApiOperation("根据表示查询菜单权限信息")
+    @ApiOperation("根据标识查询菜单权限信息")
     @GetMapping("info/{menuId}")
     @PreAuthorize("hasAuthority('sys:menu:info')")
     public Result<SysMenu> loadSysMenuInfo(@PathVariable Long menuId) {
