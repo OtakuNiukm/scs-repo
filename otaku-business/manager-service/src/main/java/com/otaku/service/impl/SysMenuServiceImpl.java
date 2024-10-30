@@ -1,8 +1,11 @@
 package com.otaku.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.otaku.constant.ManagerConstants;
 import com.otaku.domain.SysMenu;
+import com.otaku.ex.handler.BusinessException;
 import com.otaku.mapper.SysMenuMapper;
 import com.otaku.service.SysMenuService;
 import io.swagger.annotations.ApiOperation;
@@ -96,5 +99,41 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
     public Boolean saveSysMenu(SysMenu sysMenu) {
         return sysMenuMapper.insert(sysMenu) > 0;
+    }
+
+    /**
+     * 修改权限
+     * @param sysMenu 权限实体
+     * @return Boolean
+     */
+    @Override
+    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
+    public Boolean modifySysRole(SysMenu sysMenu) {
+        // 获取菜单类型
+        Integer type = sysMenu.getType();
+        if (type == 0) {
+            sysMenu.setParentId(0L);
+        }
+        return sysMenuMapper.updateById(sysMenu) > 0;
+    }
+
+    /**
+     * 删除菜单
+     * @param menuId 菜单id
+     * @return Boolean
+     */
+    @Override
+    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
+    public Boolean removeSysMenuById(Long menuId) {
+        // 根据菜单标识查询子菜单集合
+        List<SysMenu> sysMenuList = sysMenuMapper.selectList(new LambdaQueryWrapper<SysMenu>()
+                .eq(SysMenu::getParentId, menuId));
+        // 判断子菜单集合是否为空
+        if (CollectionUtil.isNotEmpty(sysMenuList) && !sysMenuList.isEmpty()) {
+            // 当前菜单不包含子节点, 不可以删除
+            throw  new BusinessException("当前节点包含子节点，不可删除");
+        }
+        // 删除菜单
+        return sysMenuMapper.deleteById(menuId) > 0;
     }
 }

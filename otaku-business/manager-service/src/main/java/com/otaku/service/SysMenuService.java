@@ -35,4 +35,18 @@ public interface SysMenuService extends IService<SysMenu> {
      * @return Boolean
      */
     Boolean saveSysMenu(SysMenu sysMenu);
+
+    /**
+     * 修改菜单
+     * @param sysMenu 权限实体
+     * @return Boolean
+     */
+    Boolean modifySysRole(SysMenu sysMenu);
+
+    /**
+     * 删除菜单
+     * @param menuId 菜单id
+     * @return Boolean
+     */
+    Boolean removeSysMenuById(Long menuId);
 }

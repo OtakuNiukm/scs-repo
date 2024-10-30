@@ -7,6 +7,7 @@ import com.otaku.util.AuthUtils;
 import com.otaku.vo.MenuAndAuth;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -84,5 +85,31 @@ public class SysMenuController {
     public Result<SysMenu> loadSysMenuInfo(@PathVariable Long menuId) {
         SysMenu sysMenu = sysMenuService.getById(menuId);
         return Result.success(sysMenu);
+    }
+
+    /**
+     * 修改菜单权限信息
+     * @param sysMenu 修改权限实体
+     * @return ResultE
+     */
+    @ApiOperation("修改菜单权限信息")
+    @PutMapping
+    @PreAuthorize("hasAuthority('sys:menu:update')")
+    public Result<String> modifySysMenu(@RequestBody SysMenu sysMenu) {
+        Boolean modified = sysMenuService.modifySysRole(sysMenu);
+        return Result.handle(modified);
+    }
+
+    /**
+     * 删除菜单权限
+     * @param menuId 标识
+     * @return Result
+     */
+    @ApiOperation("删除菜单权限")
+    @DeleteMapping("{menuId}")
+    @PreAuthorize("hasAuthority('sys:menu:delete')")
+    public Result<String> removeSysMenu(@PathVariable Long menuId) {
+        Boolean removed = sysMenuService.removeSysMenuById(menuId);
+        return Result.handle(removed);
     }
 }
