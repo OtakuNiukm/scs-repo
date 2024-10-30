@@ -90,7 +90,7 @@ public class SysMenuController {
     /**
      * 修改菜单权限信息
      * @param sysMenu 修改权限实体
-     * @return ResultE
+     * @return Result
      */
     @ApiOperation("修改菜单权限信息")
     @PutMapping
