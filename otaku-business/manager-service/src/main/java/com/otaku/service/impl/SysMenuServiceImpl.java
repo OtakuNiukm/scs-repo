@@ -8,14 +8,12 @@ import com.otaku.domain.SysMenu;
 import com.otaku.ex.handler.BusinessException;
 import com.otaku.mapper.SysMenuMapper;
 import com.otaku.service.SysMenuService;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -82,6 +80,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     /**
      * 查询所有菜单权限集合
+     *
      * @return List<SysMenu> 所有权限集合
      */
     @Override
@@ -92,6 +91,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     /**
      * 新增权限
+     *
      * @param sysMenu 权限实体
      * @return Boolean
      */
@@ -103,6 +103,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     /**
      * 修改权限
+     *
      * @param sysMenu 权限实体
      * @return Boolean
      */
@@ -119,6 +120,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     /**
      * 删除菜单
+     *
      * @param menuId 菜单id
      * @return Boolean
      */
@@ -131,7 +133,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         // 判断子菜单集合是否为空
         if (CollectionUtil.isNotEmpty(sysMenuList) && !sysMenuList.isEmpty()) {
             // 当前菜单不包含子节点, 不可以删除
-            throw  new BusinessException("当前节点包含子节点，不可删除");
+            throw new BusinessException("当前节点包含子节点，不可删除");
         }
         // 删除菜单
         return sysMenuMapper.deleteById(menuId) > 0;

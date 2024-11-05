@@ -32,6 +32,7 @@ public class SysUserController {
 
     /**
      * 查询登录
+     *
      * @return 结果
      */
     @ApiOperation("查询登录用户信息")
@@ -46,8 +47,9 @@ public class SysUserController {
 
     /**
      * 多条件分页查询系统管理员
-     * @param current 当前页
-     * @param size 每页显示条目
+     *
+     * @param current  当前页
+     * @param size     每页显示条目
      * @param username 用户名
      * @return 分页对象
      */
@@ -69,6 +71,7 @@ public class SysUserController {
 
     /**
      * 新增管理员
+     *
      * @param sysUser 管理员实体
      * @return 结果
      */
@@ -82,6 +85,7 @@ public class SysUserController {
 
     /**
      * 根据标识查询系统管理员信息
+     *
      * @param id 标识
      * @return 结果
      */
@@ -90,11 +94,12 @@ public class SysUserController {
     @PreAuthorize("hasAuthority('sys:user:info')")
     public Result<SysUser> loadSysUserInfo(@PathVariable Long id) {
         SysUser sysUser = sysUserService.querySysUserInfoByUserId(id);
-       return Result.success(sysUser);
+        return Result.success(sysUser);
     }
 
     /**
      * 修改管理员信息
+     *
      * @param sysUser 管理员实体
      * @return 结果
      */
@@ -108,6 +113,7 @@ public class SysUserController {
 
     /**
      * 批量/单个删除管理员
+     *
      * @param userIds 管理员标识集合
      * @return 结果
      */
@@ -116,6 +122,6 @@ public class SysUserController {
     @PreAuthorize("hasAuthority('sys:user:delete')")
     public Result<String> removeSysUsers(@PathVariable List<Long> userIds) {
         Boolean removed = sysUserService.removeSysUserListByUserIds(userIds);
-       return Result.handle(removed);
+        return Result.handle(removed);
     }
 }

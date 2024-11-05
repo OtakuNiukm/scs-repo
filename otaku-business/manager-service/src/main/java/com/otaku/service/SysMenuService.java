@@ -25,12 +25,14 @@ public interface SysMenuService extends IService<SysMenu> {
 
     /**
      * 查询所有菜单列表
+     *
      * @return List
      */
     List<SysMenu> queryAllSysMenuList();
 
     /**
      * 新增菜单
+     *
      * @param sysMenu 权限实体
      * @return Boolean
      */
@@ -38,6 +40,7 @@ public interface SysMenuService extends IService<SysMenu> {
 
     /**
      * 修改菜单
+     *
      * @param sysMenu 权限实体
      * @return Boolean
      */
@@ -45,6 +48,7 @@ public interface SysMenuService extends IService<SysMenu> {
 
     /**
      * 删除菜单
+     *
      * @param menuId 菜单id
      * @return Boolean
      */

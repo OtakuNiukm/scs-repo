@@ -2,7 +2,6 @@ package com.otaku.aspect;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -33,7 +32,7 @@ public class SysLogAspect {
     /**
      * 切入点表达式
      */
-    public static  final String POINT_CUT = "execution (* com.otaku.controller.*.*(..))";
+    public static final String POINT_CUT = "execution (* com.otaku.controller.*.*(..))";
 
     @Around(value = POINT_CUT)
     public Object logAround(ProceedingJoinPoint joinPoint) {

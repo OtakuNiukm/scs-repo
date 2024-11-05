@@ -103,9 +103,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     /**
      * 修改管理员信息
-     *   1. 删除管理员原有与角色关系记录
-     *   2. 新增管理员与角色关系记录
-     *   3. 修改管理员信息
+     * 1. 删除管理员原有与角色关系记录
+     * 2. 新增管理员与角色关系记录
+     * 3. 修改管理员信息
+     *
      * @param sysUser
      * @return
      */
@@ -150,8 +151,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     /**
      * 批量/单个删除管理员
-     *   1. 删除管理员与角色关系记录
-     *   2. 删除管理员信息
+     * 1. 删除管理员与角色关系记录
+     * 2. 删除管理员信息
+     *
      * @param userIds
      * @return
      */

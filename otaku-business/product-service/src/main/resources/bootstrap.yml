@@ -1,6 +1,6 @@
 spring:
   application:
-    name: manager-service
+    name: product-service
   cloud:
     nacos:
       server-addr: 182.92.206.132:8848
@@ -19,8 +19,3 @@ spring:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
   profiles:
     active: dev
-mybatis-plus:
-  global-config:
-    db-config:
-      update-strategy: not_empty # 修改mybatis plus字段策略
-

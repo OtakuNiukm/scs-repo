@@ -24,10 +24,11 @@ public class ManagerServiceApplication {
 
     /**
      * Spring Security框架中的密码加密器
+     *
      * @return
      */
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

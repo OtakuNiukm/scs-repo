@@ -7,7 +7,6 @@ import com.otaku.util.AuthUtils;
 import com.otaku.vo.MenuAndAuth;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +31,7 @@ public class SysMenuController {
 
     /**
      * 查询用户的菜单权限和操作权限
+     *
      * @return Result
      */
     // sys/menu/nav
@@ -51,6 +51,7 @@ public class SysMenuController {
 
     /**
      * 查询系统所有权限集合
+     *
      * @return Result
      */
     @ApiOperation("查询系统所有权限集合")
@@ -58,11 +59,12 @@ public class SysMenuController {
     @PreAuthorize("hasAuthority('sys:menu:list')")
     public Result<List<SysMenu>> loadAllSysMenuList() {
         List<SysMenu> sysMenuList = sysMenuService.queryAllSysMenuList();
-       return Result.success(sysMenuList);
+        return Result.success(sysMenuList);
     }
 
     /**
      * 新增权限
+     *
      * @param sysMenu 新增权限实体
      * @return Result
      */
@@ -76,6 +78,7 @@ public class SysMenuController {
 
     /**
      * 根据标识查询菜单权限信息
+     *
      * @param menuId 标识
      * @return Result
      */
@@ -89,6 +92,7 @@ public class SysMenuController {
 
     /**
      * 修改菜单权限信息
+     *
      * @param sysMenu 修改权限实体
      * @return Result
      */
@@ -102,6 +106,7 @@ public class SysMenuController {
 
     /**
      * 删除菜单权限
+     *
      * @param menuId 标识
      * @return Result
      */

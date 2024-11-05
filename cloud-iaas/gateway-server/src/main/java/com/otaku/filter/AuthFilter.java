@@ -67,6 +67,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
         if (StringUtils.hasText(authorizationValue)) {
             String tokenValue = authorizationValue.replaceFirst(AuthConstants.BEARER, "");
             if (StringUtils.hasText(tokenValue) && Boolean.TRUE.equals(stringRedisTemplate.hasKey(AuthConstants.LOGIN_TOKEN_PREFIX + tokenValue))) {
+                log.info("Token认证通过，时间：{}，请求API路径：{}", new Date(), path);
                 return chain.filter(exchange);
             }
         }

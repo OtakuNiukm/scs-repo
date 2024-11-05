@@ -58,6 +58,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
      * 新增角色
      * 1. 新增角色
      * 2. 新增角色与权限关系集合
+     *
      * @param sysRole 新增角色对象
      * @return Boolean
      */
@@ -97,6 +98,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
     /**
      * 根据角色ID查询角色信息
+     *
      * @param roleId 角色ID
      * @return SysRole
      */
@@ -122,6 +124,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
      * 修改角色信息
      * 1. 修改角色信息
      * 2. 修改角色与权限关系集合
+     *
      * @param sysRole 修改角色对象
      * @return Boolean
      */
@@ -159,6 +162,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
     /**
      * 批量或单个删除角色信息
+     *
      * @param roleIdList 角色ID集合
      * @return Boolean
      */

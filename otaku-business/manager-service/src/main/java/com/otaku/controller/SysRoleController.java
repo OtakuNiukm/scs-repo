@@ -31,6 +31,7 @@ public class SysRoleController {
 
     /**
      * 查询所有角色
+     *
      * @return 角色列表
      */
     @ApiOperation("查询所有角色 ")
@@ -43,8 +44,9 @@ public class SysRoleController {
 
     /**
      * 多条件分页查询角色列表
-     * @param current 当前页码
-     * @param size 每页显示条目
+     *
+     * @param current  当前页码
+     * @param size     每页显示条目
      * @param roleName 角色名称
      * @return 分页对象
      */
@@ -65,7 +67,8 @@ public class SysRoleController {
     }
 
     /**
-     *  新增角色
+     * 新增角色
+     *
      * @param sysRole 角色对象
      * @return 新增结果
      */
@@ -74,11 +77,12 @@ public class SysRoleController {
     @PreAuthorize("hasAuthority('sys:role:save')")
     public Result<String> saveSysRole(@RequestBody SysRole sysRole) {
         Boolean saved = sysRoleService.saveSysRole(sysRole);
-       return Result.handle(saved);
+        return Result.handle(saved);
     }
 
     /**
      * 根据标识查询角色详情
+     *
      * @param roleId 标识
      * @return 角色详情
      */
@@ -92,6 +96,7 @@ public class SysRoleController {
 
     /**
      * 修改角色信息
+     *
      * @return 修改结果
      */
     @ApiOperation("修改角色信息")

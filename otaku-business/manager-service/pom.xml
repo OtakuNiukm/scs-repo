@@ -33,6 +33,11 @@
             <groupId>com.otaku</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
+        <!--阿里云oss依赖-->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

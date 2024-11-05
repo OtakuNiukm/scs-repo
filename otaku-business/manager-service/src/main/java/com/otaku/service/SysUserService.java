@@ -16,6 +16,7 @@ public interface SysUserService extends IService<SysUser> {
 
     /**
      * 新增管理员
+     *
      * @param sysUser
      * @return
      */
@@ -23,6 +24,7 @@ public interface SysUserService extends IService<SysUser> {
 
     /**
      * 根据用户id查询用户信息
+     *
      * @param id
      * @return
      */
@@ -30,6 +32,7 @@ public interface SysUserService extends IService<SysUser> {
 
     /**
      * 修改管理员信息
+     *
      * @param sysUser
      * @return
      */
@@ -37,6 +40,7 @@ public interface SysUserService extends IService<SysUser> {
 
     /**
      * 批量/单个删除管理员
+     *
      * @param userIds
      * @return
      */

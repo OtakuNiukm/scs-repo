@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.otaku.mapper.SkuMapper">
+  <resultMap id="BaseResultMap" type="com.otaku.domain.Sku">
+    <!--@mbg.generated-->
+    <!--@Table sku-->
+    <id column="sku_id" jdbcType="BIGINT" property="skuId" />
+    <result column="prod_id" jdbcType="BIGINT" property="prodId" />
+    <result column="properties" jdbcType="VARCHAR" property="properties" />
+    <result column="ori_price" jdbcType="DECIMAL" property="oriPrice" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="stocks" jdbcType="INTEGER" property="stocks" />
+    <result column="actual_stocks" jdbcType="INTEGER" property="actualStocks" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="model_id" jdbcType="VARCHAR" property="modelId" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="sku_name" jdbcType="VARCHAR" property="skuName" />
+    <result column="prod_name" jdbcType="VARCHAR" property="prodName" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="volume" jdbcType="DOUBLE" property="volume" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    sku_id, prod_id, properties, ori_price, price, stocks, actual_stocks, update_time, 
+    create_time, model_id, pic, sku_name, prod_name, version, weight, volume, `status`
+  </sql>
+</mapper>
