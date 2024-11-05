@@ -19,4 +19,10 @@ public interface CategoryService extends IService<Category>{
      * @return 类目列表
      */
     List<Category> queryAllCategoryList();
+
+    /**
+     * 查询一级类目
+     * @return 一级类目列表
+     */
+    List<Category> queryFirstCategoryList();
 }

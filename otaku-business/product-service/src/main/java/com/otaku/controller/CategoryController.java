@@ -6,6 +6,7 @@ import com.otaku.service.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,18 @@ public class CategoryController {
     @PreAuthorize("hasAuthority('prod:category:page')")
     public Result<List<Category>> loadAllCategoryList() {
         List<Category> categoryList = categoryService.queryAllCategoryList();
+        return Result.success(categoryList);
+    }
+
+    /**
+     * 查询系统商品一级类目
+     * @return 商品类目列表
+     */
+    @ApiOperation("查询系统商品一级类目")
+    @GetMapping("listCategory")
+    @PreAuthorize("hasAuthority('prod:category:page')")
+    public Result<List<Category>> loadFirstCategoryList() {
+        List<Category> categoryList = categoryService.queryFirstCategoryList();
         return Result.success(categoryList);
     }
 }

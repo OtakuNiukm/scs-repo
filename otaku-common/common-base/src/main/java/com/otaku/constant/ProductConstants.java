@@ -13,4 +13,9 @@ public interface ProductConstants {
      * 所有分类key
      */
     String ALL_CATEGORY_LIST_KEY = "'allCategory'";
+
+    /**
+     * 一级分类key
+     */
+    String FIRST_CATEGORY_LIST_KEY = "'firstCategory'";
 }
