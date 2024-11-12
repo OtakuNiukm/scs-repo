@@ -62,7 +62,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         int i = sysUserMapper.insert(sysUser);
         if (i > 0) {
             // 获取管理员标识
-            Long userId = sysUser.getUserId();
+            // 根据账号查找
+            Long userId = sysUserMapper.selectOne(new LambdaQueryWrapper<SysUser>()
+                    .eq(SysUser::getUsername, sysUser.getUsername())
+            ).getUserId();
             // 获取管理员与角色的关系
             // 获取角色id集合
             List<Long> roleIdList = sysUser.getRoleIdList();

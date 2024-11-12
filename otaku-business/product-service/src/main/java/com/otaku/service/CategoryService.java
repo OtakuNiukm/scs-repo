@@ -25,4 +25,11 @@ public interface CategoryService extends IService<Category>{
      * @return 一级类目列表
      */
     List<Category> queryFirstCategoryList();
+
+    /**
+     * 新增类目
+     * @param category 类目对象
+     * @return 结果
+     */
+    Boolean saveCategory(Category category);
 }

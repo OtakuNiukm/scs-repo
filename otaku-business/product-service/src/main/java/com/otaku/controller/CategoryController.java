@@ -9,9 +9,7 @@ import io.swagger.annotations.Authorization;
 import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -52,5 +50,17 @@ public class CategoryController {
     public Result<List<Category>> loadFirstCategoryList() {
         List<Category> categoryList = categoryService.queryFirstCategoryList();
         return Result.success(categoryList);
+    }
+
+    /**
+     * 新增商品类目
+     * @return 新增结果
+     */
+    @ApiOperation("新增商品类目")
+    @PostMapping
+    @PreAuthorize("hasAuthority('prod:category:save')")
+    public Result<String> saveCategory(@RequestBody Category category) {
+        Boolean saved = categoryService.saveCategory(category);
+        return Result.handle(saved);
     }
 }

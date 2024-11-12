@@ -3,11 +3,14 @@ package com.otaku.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.otaku.constant.ProductConstants;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.otaku.domain.Category;
@@ -50,4 +53,21 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
                 .eq(Category::getStatus, 1)
                 .orderByDesc(Category::getSeq));
     }
+
+    /**
+     * 新增类目
+     * @param category 类目对象
+     * @return 是否新增成功
+     */
+    @Override
+    @Caching(evict = {
+            @CacheEvict(key = ProductConstants.ALL_CATEGORY_LIST_KEY),
+            @CacheEvict(key = ProductConstants.FIRST_CATEGORY_LIST_KEY)
+    })
+    public Boolean saveCategory(Category category) {
+        category.setCreateTime(new Date());
+        category.setUpdateTime(new Date());
+        return categoryMapper.insert(category) > 0;
+    }
+
 }

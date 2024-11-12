@@ -90,7 +90,7 @@ public class FileUploadController {
             // 上传
             ossClient.putObject(putObjectRequest);
             // 创建上传文件访问的URL
-            url = ossClient.generatePresignedUrl(bucketName, objectName, DateUtil.offsetDay(new Date(), 365 * 10));
+            url = ossClient.generatePresignedUrl(bucketName, objectName, DateUtil.offsetDay(new Date(), 7));
         } catch (Exception e) {
             System.out.println("Error Message:" + e.getMessage());
         } finally {
